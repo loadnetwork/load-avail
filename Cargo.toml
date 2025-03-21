@@ -5,5 +5,15 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.97"
-serde = "1.0.219"
+shuttle-axum = "0.50.0"
+shuttle-runtime = "0.50.0"
+axum = "0.7.4"
+reqwest = {version = "0.12.12", features = ["json"]}
+tokio = {version = "1.44.1", features = ["full"]}
+tower-http = {version = "0.6.2", features = ["timeout"]}
+serde = {version = "1.0.219", features = ["derive"]}
 serde_json = "1.0.140"
+avail-rust = { git = "https://github.com/availproject/avail-rust.git", branch = "main" }
+bundler = {git = "https://github.com/weaveVM/bundler.git", branch = "main"}
+dotenv = "0.15.0"
+hex = "0.4.3"
