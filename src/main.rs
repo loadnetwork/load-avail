@@ -1,4 +1,4 @@
-use crate::utils::server::{get_status, store_avail_blob_mainnet, store_avail_blob_turning};
+use crate::utils::server::{get_status, store_avail_blob_mainnet, store_avail_blob_turing};
 use axum::{Router, routing::get};
 
 pub mod core;
@@ -19,7 +19,7 @@ async fn main(
         .route("/v1", get(get_status))
         .route(
             "/v1/store/turing/:block_hash/:tx_hash",
-            get(store_avail_blob_turning),
+            get(store_avail_blob_turing),
         )
         .route(
             "/v1/store/mainnet/:block_hash/:tx_hash",

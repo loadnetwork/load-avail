@@ -47,7 +47,7 @@ pub async fn store_avail_blobs(
     block_hash: &str,
     tx_hash: &str,
     load_pk: &str,
-) -> Result<String, Error> {
+) -> Result<(String, u32, u64), Error> {
     let mut envelopes: Vec<Envelope> = vec![];
     let client = Client::new()
         .avail_websocket(avail_network_endpoint)
@@ -55,14 +55,14 @@ pub async fn store_avail_blobs(
         .build()
         .await
         .unwrap();
-    println!("AVAIL CLIENT {:?}", client);
+
     let blobs = get_avail_blobs(client, block_hash, tx_hash).await.unwrap();
 
     // as Avail has block size of 2MB (and in dicussing to lift to 4MB)
     // we can fit all block's blobs in a single 0xbabe1 bundle (8MB size limit)
     // more info: https://forum.availproject.org/t/aip-6-increase-block-size-to-4mb-maxappdatalength-to-1-mb/1648
 
-    for blob in blobs {
+    for blob in blobs.clone() {
         let blob = serde_json::to_vec(&blob).unwrap();
         envelopes.push(create_envelope(blob).unwrap())
     }
@@ -70,5 +70,8 @@ pub async fn store_avail_blobs(
     let bundle_id = send_babe1_bundle(envelopes, load_pk.to_string())
         .await
         .unwrap();
-    Ok(bundle_id)
+
+    let blobs_count = blobs.len() as u32;
+    let blobs_total_size = blobs.iter().map(|blob| blob.data.len()).sum::<usize>() as u64;
+    Ok((bundle_id, blobs_count, blobs_total_size))
 }
