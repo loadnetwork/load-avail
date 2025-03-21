@@ -1,5 +1,3 @@
-use std::vec;
-
 // using 0xbabe1 bundles given the Avail's 1MB blob size limit
 use crate::core::client::Client;
 use crate::core::loader::get_avail_blobs;

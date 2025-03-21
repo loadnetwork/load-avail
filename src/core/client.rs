@@ -29,7 +29,7 @@ impl Client {
         self
     }
 
-    pub async fn build(mut self) -> Result<Self, Error> {
+    pub async fn build(self) -> Result<Self, Error> {
         let avail_websocket = self.avail_websocket.unwrap();
         let loader_pk = self.loader_pk.unwrap();
 
