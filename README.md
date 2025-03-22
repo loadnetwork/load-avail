@@ -56,7 +56,10 @@ pub struct StoredBlob {
 }
 ```
 
-After a successful storage on Load Network, the blob can be retrieved from any of the Load Network data gateways; example: https://gateway.load.rs/bundle/0xf0fcdf6115c8e22c5fbc7628737b61867d092f679d53b3293bc0d65e58a3099e/0
+After a successful storage on Load Network, the blob can be retrieved from any of the Load Network data gateways; example: 
+
+* Turing blob: https://gateway.load.rs/bundle/0xf0fcdf6115c8e22c5fbc7628737b61867d092f679d53b3293bc0d65e58a3099e/0
+* Mainnet blob: https://gateway.load.rs/bundle/0x3ae47078f79d1bf224636b7c915adee37858c0c1c94589a83b42e89011c9f2c2/0 
 
 
 ## Roadmap
