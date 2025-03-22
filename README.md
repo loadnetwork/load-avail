@@ -2,7 +2,32 @@
 
 `load-avail` is a tool composed of REST API and Rust SDK to store [Avail's](https://www.availproject.org/da) blobs on [Load Network](https://load.network) -- built on [avail-rust](https://github.com/availproject/avail-rust) and [bundler](https://github.com/bundler)
 
+## Rust SDK
+
+```Cargo.toml
+load-avail = {git = "https://github.com/loadnetwork/load-avail.git", branch = "main"}
+```
+
+### Store a blob 
+
+```rust
+use load_avail::core::babe_tx::store_avail_blobs;
+use load_avail::utils::constants::{AVAIL_MAINNET_WS, AVAIL_TURING_WS};
+
+let block_hash: &str = "0xe17c7c47487e6144476991b29f0027491563c796fab80a8e12b20a44831cc348";
+let tx_hash: &str = "0x35fa9ebde3060f0ef4f67da004193166a356cf57889ef003b45c644376e6b763";
+let load_pk: &str = "...";
+
+let (bundle_id, blobs_count, blobs_total_size) =
+    store_avail_blobs(AVAIL_MAINNET_WS, block_hash, tx_hash, load_pk)
+        .await
+        .unwrap();
+
+```
+
 ## REST API
+
+##### API endpoint: [avail.load.rs](https://avail.load.rs)
 
 ### Store Avail blob data on Load Network
 
