@@ -1,6 +1,6 @@
 ## About
 
-`load-avail` is a tool composed of REST API and Rust SDK to store [Avail's](https://www.availproject.org/da) blobs on [Load Network](https://load.network) -- built on [avail-rust](https://github.com/availproject/avail-rust) and [bundler](https://github.com/bundler)
+`load-avail` is a tool composed of REST API and Rust SDK to store [Avail's](https://www.availproject.org/da) blobs on [Load Network](https://load.network) -- built on [avail-rust](https://github.com/availproject/avail-rust) and [bundler](https://github.com/weaveVM/bundler)
 
 ## Rust SDK
 
@@ -31,7 +31,7 @@ let (bundle_id, blobs_count, blobs_total_size) =
 
 ### Store Avail blob data on Load Network
 
-For a given tx hash and a block hash (avail), `load-avail` retrieves the blobs of the block, pack them in `0xbabe1` bundle (a single bundle can handle a maxxed Avail block) and store it on Load Network. Blobs are stored in the `DataSubmission` data struct format.
+For a given tx hash and a block hash (avail), `load-avail` retrieves the blobs of the block, pack them in `0xbabe1` bundle (a single bundle can handle a maxxed Avail block) and store it on Load Network. Blobs are stored in the `DataSubmission` data struct format. Storage fees are subsidized by the server.
 
 #### Mainnet
 
